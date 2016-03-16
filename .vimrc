@@ -6,11 +6,6 @@ let g:syntastic_cpp_compiler_options = "-std=c++11"
 syntax on
 colorscheme nofrils-dark
 
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set et
-
 set autoindent
 set breakindent
 
@@ -66,6 +61,11 @@ set colorcolumn+=101
 set colorcolumn+=121
 set colorcolumn+=141
 set colorcolumn+=161
+
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set et
 
 set hlsearch
 nnoremap <CR> :noh<CR>
