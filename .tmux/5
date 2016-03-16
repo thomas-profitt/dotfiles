@@ -1,8 +1,7 @@
 selectp -t 0
-splitw -h -p 50
+splitw -h -l 80
 
-selectp -t 0
-resize-pane -x 80
+resize-pane -t 0 -x 80
 
 selectp -t 1
 splitw -h -p 50
