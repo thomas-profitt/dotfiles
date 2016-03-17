@@ -17,14 +17,14 @@ if !exists("g:nofrils_strbackgrounds") " {{{
 endif " }}}
 
 " Baseline {{{
-hi Normal		term=NONE	cterm=NONE	ctermfg=255	ctermbg=234	gui=NONE	guifg=#FFFFFF	guibg=#262626
+hi Normal		term=NONE	cterm=NONE	ctermfg=255	ctermbg=234	gui=NONE	guifg=#EEEEEE	guibg=#1C1C1C
 " }}}
 
 " Faded {{{
 hi Comment		term=NONE	cterm=NONE	ctermfg=240	ctermbg=NONE	gui=NONE	guifg=#585858	guibg=NONE
 hi FoldColumn		term=NONE	cterm=NONE	ctermfg=0	ctermbg=240	gui=NONE	guifg=#000000	guibg=#585858
 hi Folded		term=NONE	cterm=NONE	ctermfg=240	ctermbg=NONE	gui=NONE	guifg=#585858	guibg=NONE
-hi LineNr		term=NONE	cterm=NONE	ctermfg=8	ctermbg=234	gui=NONE	guifg=#555555	guibg=#262626
+hi LineNr		term=NONE	cterm=NONE	ctermfg=8	ctermbg=234	gui=NONE	guifg=#555555	guibg=#1C1C1C
 hi NonText		term=NONE	cterm=NONE	ctermfg=240	ctermbg=NONE	gui=NONE	guifg=#585858	guibg=NONE
 hi SignColumn		term=NONE	cterm=NONE	ctermfg=240	ctermbg=NONE	gui=NONE	guifg=#585858	guibg=NONE
 hi SpecialKey		term=NONE	cterm=NONE	ctermfg=240	ctermbg=NONE	gui=NONE	guifg=#585858	guibg=NONE
@@ -35,7 +35,7 @@ hi VertSplit		term=NONE	cterm=NONE	ctermfg=black	ctermbg=240	gui=NONE	guifg=#000
 " Highlighted {{{
 hi CursorIM		term=NONE	cterm=NONE	ctermfg=0	ctermbg=4	gui=NONE	guifg=#000000	guibg=#00FFFF
 hi CursorLineNr		term=NONE	cterm=NONE	ctermfg=NONE	ctermbg=0	gui=NONE	guifg=NONE	guibg=#000000
-hi CursorLine		term=NONE	cterm=NONE	ctermfg=NONE	ctermbg=235	gui=NONE	guifg=NONE	guibg=#000000
+hi CursorLine		term=NONE	cterm=NONE	ctermfg=NONE	ctermbg=235	gui=NONE	guifg=NONE	guibg=#262626
 hi Cursor		term=NONE	cterm=NONE	ctermfg=0	ctermbg=4	gui=NONE	guifg=#000000	guibg=#00FFFF
 hi Directory		term=NONE	cterm=NONE	ctermfg=69	ctermbg=NONE	gui=NONE	guifg=#5F87FF	guibg=NONE
 hi ErrorMsg		term=NONE	cterm=NONE	ctermfg=15	ctermbg=52	gui=NONE	guifg=NONE	guibg=#5F0000
@@ -51,8 +51,8 @@ hi WarningMsg		term=NONE	cterm=NONE	ctermfg=15	ctermbg=52	gui=NONE	guifg=NONE	gu
 " }}}
 
 " Reversed {{{
-hi ColorColumn		term=NONE	cterm=NONE	ctermfg=NONE	ctermbg=233	gui=NONE	guifg=NONE	guibg=#000000
-hi CursorColumn		term=NONE	cterm=NONE	ctermfg=NONE	ctermbg=235	gui=NONE	guifg=NONE	guibg=#000000
+hi ColorColumn		term=NONE	cterm=NONE	ctermfg=NONE	ctermbg=233	gui=NONE	guifg=NONE	guibg=#121212
+hi CursorColumn		term=NONE	cterm=NONE	ctermfg=NONE	ctermbg=235	gui=NONE	guifg=NONE	guibg=#262626
 hi DiffText		term=reverse	cterm=reverse	ctermfg=NONE	ctermbg=NONE	gui=reverse	guifg=NONE	guibg=NONE
 hi IncSearch		term=reverse	cterm=reverse	ctermfg=NONE	ctermbg=NONE	gui=reverse	guifg=NONE	guibg=NONE
 hi MatchParen		term=reverse	cterm=reverse	ctermfg=NONE	ctermbg=NONE	gui=reverse	guifg=NONE	guibg=NONE

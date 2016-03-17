@@ -89,8 +89,8 @@
 " }}}
 " Colorscheme initialization {{{
 " --------------------------
-if has("gui_running") || $NVIM_TUI_ENABLE_TRUE_COLOR
-    "set background=dark
+if has("gui_running")
+    set background=dark
 endif
 hi clear
 if exists("syntax_on")
@@ -100,7 +100,7 @@ endif
 let g:colors_name = "aldmeris"
 " }}}
 " Custom highlight function {{{
-if has("gui_running") || $NVIM_TUI_ENABLE_TRUE_COLOR
+if has("gui_running")
     let s:hi_args = ['guibg', 'guifg', 'gui', 'guisp']
 else
     let s:hi_args = ['ctermbg', 'ctermfg', 'cterm']
@@ -127,7 +127,7 @@ let s:terms_italic = ["rxvt", "rxvt-unicode", "rxvt-unicode-256color"]
 " }}}
 " Gui & term palettes definition {{{
 " ------------------------------
-if has("gui_running") || $NVIM_TUI_ENABLE_TRUE_COLOR
+if has("gui_running")
     let s:butter1     = "#fce94f"
     let s:butter2     = "#edd400"
     let s:chameleon1  = "#8ae234"
@@ -187,8 +187,8 @@ elseif &t_Co == 256
     let s:aluminium2  = "252"
     let s:aluminium3  = "250"
     let s:aluminium4  = "102"
-    let s:aluminium5  = "235" " Changed from 240
-    let s:aluminium6  = "234" " Changed from 236
+    let s:aluminium5  = "240"
+    let s:aluminium6  = "236"
     let s:black       = "16"
 else
     let s:butter1     = "LightYellow"
@@ -198,7 +198,7 @@ else
     let s:orange1     = "LightCyan"
     let s:orange2     = "Cyan"
     let s:orange3     = "DarkCyan"
-    let s:skyblue1    = "Cyan" "Changed from LightBlue
+    let s:skyblue1    = "LightBlue"
     let s:skyblue2    = "Blue"
     let s:plum1       = "LightMagenta"
     let s:plum2       = "Magenta"
@@ -212,7 +212,7 @@ else
     let s:aluminium6  = "DarkGrey"
     let s:black       = "Black"
 endif
-if ((!has("gui_running") || !$NVIM_TUI_ENABLE_TRUE_COLOR) && g:aldmeris_transparent == 1)
+if (!has("gui_running") && g:aldmeris_transparent == 1)
     let s:aluminium6 = "NONE"
 endif
 " }}}
@@ -233,7 +233,7 @@ call s:Hi( 'Error',        s:scarletred2,  s:aluminium1,   "bold" )
 call s:Hi( 'Todo',         s:butter1,      s:aluminium4,   "bold" )
 
 " italic is a special case
-if !has("gui_running") || !$NVIM_TUI_ENABLE_TRUE_COLOR
+if !has("gui_running")
     if (index(s:terms_italic, &term) < 0)
         hi Comment cterm=NONE
     endif
@@ -270,7 +270,7 @@ call s:Hi( 'PmenuThumb',    s:aluminium4,   s:aluminium4 )
 call s:Hi( 'Question',      s:aluminium6,   s:chameleon1,   "bold" )
 call s:Hi( 'Search',        s:chameleon3,   s:aluminium1 )
 call s:Hi( 'SpecialKey',    s:aluminium6,   s:aluminium5 )
-    if has("gui_running") || $NVIM_TUI_ENABLE_TRUE_COLOR
+    if has("gui_running")
 call s:Hi( 'SpellBad',      s:aluminium6,   "NONE",         "undercurl",   s:scarletred1 )
 call s:Hi( 'SpellCap',      s:aluminium6,   "NONE",         "undercurl",   s:skyblue1 )
 call s:Hi( 'SpellLocal',    s:aluminium6,   "NONE",         "undercurl",   s:orange1 )
