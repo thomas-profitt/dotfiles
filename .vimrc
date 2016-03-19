@@ -1,9 +1,9 @@
 call pathogen#infect()
-let g:aldmeris_transparent = 1
+let g:aldmeris_transparent = 0
 let g:syntastic_cpp_compiler_options = "-std=c++11"
 
 syntax on
-colorscheme nofrils-dark
+colorscheme flatlandia
 
 set autoindent
 set breakindent
@@ -26,21 +26,18 @@ set matchpairs+=<:>
 set showbreak=+\ 
 
 set mouse=a
-if !has('nvim')
-  set ttymouse=sgr
-endif
 
-""" Work with our git repos
+" Work with our git repos
 set binary
 set noeol
 
-"" Finger-savers
+" Finger-savers
 nore ; :
 nore , ;
 imap jj <Esc>
 map <C-n> :NERDTreeToggle<CR>
 
-"" I may never want to use vim's registers.
+" I may never want to use vim's registers.
 nnoremap y  "+y
 nnoremap yy "+yy
 nnoremap d  "+d
@@ -52,7 +49,7 @@ vnoremap d "+d
 vnoremap p "+p
 vnoremap P "+P
 
-"" Fix backspace not working in insert mode in iTerm2
+" Fix backspace not working in insert mode in iTerm2
 set backspace=indent,eol,start
 
 set colorcolumn+=81
@@ -68,3 +65,10 @@ set et
 
 set hlsearch
 nnoremap <CR> :noh<CR>
+
+" nvim and non-nvim specific config
+if has('nvim')
+  let NVIM_TUI_ENABLE_TRUE_COLOR = 1
+else
+  set ttymouse=sgr
+endif

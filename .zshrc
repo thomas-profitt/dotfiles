@@ -44,7 +44,6 @@ export RPROMPT='%F{cyan}%~%f'
 
 if hash nvim 2>/dev/null; then
   export VISUAL=nvim
-  export NVIM_TUI_ENABLE_TRUE_COLOR=1
   alias vim=nvim
   alias view=nvim
 else
