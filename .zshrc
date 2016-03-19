@@ -59,3 +59,7 @@ alias vcat='vim --cmd "set t_ti= t_te=" +redraw +q'
 if hash docker-machine 2>/dev/null; then
   eval "$(docker-machine env default > /dev/null 2>&1)"
 fi
+
+if hash tmux 2>/dev/null; then
+  tmux
+fi
