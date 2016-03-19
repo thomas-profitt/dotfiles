@@ -1,4 +1,3 @@
-let g:pathogen_disabled = ["vim-css-color", "csapprox"]
 call pathogen#infect()
 let g:aldmeris_transparent = 1
 let g:syntastic_cpp_compiler_options = "-std=c++11"
