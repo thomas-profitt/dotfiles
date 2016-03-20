@@ -1,4 +1,5 @@
 export PATH="$PATH:$HOME/scripts"
+export PATH="$PATH:$HOME/bin"
 
 if [[ $(uname) == 'Darwin' ]]; then
   export CLICOLOR=1
