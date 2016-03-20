@@ -88,7 +88,7 @@ hi SpecialKey guifg=#7a8288 guibg=#3b3e40 guisp=#3b3e40 gui=NONE ctermfg=66 cter
 hi Constant guifg=#b8d977 guibg=NONE guisp=NONE gui=NONE ctermfg=150 ctermbg=NONE cterm=NONE
 "hi DefinedName -- no settings --
 hi Tag guifg=#72aaca guibg=NONE guisp=NONE gui=NONE ctermfg=110 ctermbg=NONE cterm=NONE
-hi String guifg=#fffebe guibg=NONE guisp=NONE gui=NONE ctermfg=247 ctermbg=NONE cterm=NONE
+hi String guifg=#9298a1 guibg=NONE guisp=NONE gui=NONE ctermfg=247 ctermbg=NONE cterm=NONE
 hi MatchParen guifg=#26292c guibg=#fa9a4b guisp=NONE gui=NONE ctermfg=215 ctermbg=NONE cterm=underline
 "hi LocalVariable -- no settings --
 hi Repeat guifg=#72aaca guibg=NONE guisp=NONE gui=NONE ctermfg=110 ctermbg=NONE cterm=NONE
