@@ -68,7 +68,7 @@ nnoremap <CR> :noh<CR>
 
 " nvim and non-nvim specific config
 if has('nvim')
-  let NVIM_TUI_ENABLE_TRUE_COLOR = 1
+  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
 else
   set ttymouse=sgr
 endif
