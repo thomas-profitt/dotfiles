@@ -21,6 +21,7 @@ if [[ $(uname) == 'Linux' ]]; then
   fi
 fi
 
+
 export PATH="$PATH:$HOME/.rvm/bin"
 
 HISTFILE=$HOME/.zsh_history
@@ -39,8 +40,18 @@ colors
 autoload -U promptinit
 promptinit
 
-export PROMPT='%F{cyan}> %f'
-export RPROMPT='%F{cyan}%~%f'
+if [[ $(uname -n) == 'snowy' ]]; then
+  PROMPTCOLOR=cyan
+elif [[ $(uname -n) == 'owlbear' ]]; then
+  PROMPTCOLOR=blue
+elif [[ $(uname -n) == 'frogmouth' ]]; then
+  PROMPTCOLOR=green
+else
+  PROMPTCOLOR=yellow
+fi
+
+export PROMPT="%F{$PROMPTCOLOR}> %f"
+export RPROMPT="%F{$PROMPTCOLOR}%~%f"
 
 if hash nvim 2>/dev/null; then
   export VISUAL=nvim
