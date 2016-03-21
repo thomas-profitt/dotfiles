@@ -1,0 +1,30 @@
+[submodule "brightscript.vim"]
+	path = brightscript.vim
+	url = /home/tom/.vim/bundle/brightscript.vim
+[submodule "nerdtree"]
+	path = nerdtree
+	url = /home/tom/.vim/bundle/nerdtree
+[submodule "rename.vim"]
+	path = rename.vim
+	url = /home/tom/.vim/bundle/rename.vim
+[submodule "supertab"]
+	path = supertab
+	url = /home/tom/.vim/bundle/supertab
+[submodule "swift.vim"]
+	path = swift.vim
+	url = /home/tom/.vim/bundle/swift.vim
+[submodule "syntastic"]
+	path = syntastic
+	url = /home/tom/.vim/bundle/syntastic
+[submodule "tabular"]
+	path = tabular
+	url = /home/tom/.vim/bundle/tabular
+[submodule "vim-coffee-script"]
+	path = vim-coffee-script
+	url = /home/tom/.vim/bundle/vim-coffee-script
+[submodule "vim-css-color"]
+	path = vim-css-color
+	url = /home/tom/.vim/bundle/vim-css-color
+[submodule "vim-rails"]
+	path = vim-rails
+	url = /home/tom/.vim/bundle/vim-rails
