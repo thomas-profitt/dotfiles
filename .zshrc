@@ -4,9 +4,9 @@ export PATH="$PATH:$HOME/bin"
 if [[ $(uname) == 'Darwin' ]]; then
   export CLICOLOR=1
   export PATH="$PATH:$HOME/scripts/osx"
+    export PATH="$PATH:$HOME/scripts/osx/$(uname -n)"
   if [[ $(uname -n) == 'snowy' ]]; then
     export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin"
-    export PATH="$PATH:$HOME/scripts/osx/snowy"
     export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools/"
     export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
     export PATH="/usr/local/Cellar/qt5/5.4.0/bin:$PATH"
@@ -17,11 +17,8 @@ fi
 
 if [[ $(uname) == 'Linux' ]]; then
   export PATH="$PATH:$HOME/scripts/linux"
-  if [[ $(uname -n) == 'snowy' ]]; then
-    export PATH="$PATH:$HOME/scripts/linux/snowy"
-  fi
+  export PATH="$PATH:$HOME/scripts/linux/$(uname -n)"
 fi
-
 
 export PATH="$PATH:$HOME/.rvm/bin"
 
