@@ -1,12 +1,19 @@
-export PATH="$PATH:$HOME/scripts"
+# BEGIN path ###################################################################
 export PATH="$PATH:$HOME/bin"
 
+export PATH="$PATH:$HOME/scripts"
+export PATH="$PATH:$HOME/scripts/by-uname/$(uname)"
+export PATH="$PATH:$HOME/scripts/by-uname/$(uname)/by-hostname/$(uname -n)"
+export PATH="$PATH:$HOME/scripts/by-hostname/$(uname -n)"
+
+export PATH="$PATH:$HOME/.rvm/bin"
+# END path #####################################################################
+
+# BEGIN uname switching ########################################################
 if [[ $(uname) == 'Darwin' ]]; then
   export CLICOLOR=1
-  export PATH="$PATH:$HOME/scripts/osx"
   if [[ $(uname -n) == 'snowy' ]]; then
     export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin"
-    export PATH="$PATH:$HOME/scripts/osx/snowy"
     export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools/"
     export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
     export PATH="/usr/local/Cellar/qt5/5.4.0/bin:$PATH"
@@ -14,17 +21,9 @@ if [[ $(uname) == 'Darwin' ]]; then
     source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   fi
 fi
+# END uname switching ##########################################################
 
-if [[ $(uname) == 'Linux' ]]; then
-  export PATH="$PATH:$HOME/scripts/linux"
-  if [[ $(uname -n) == 'snowy' ]]; then
-    export PATH="$PATH:$HOME/scripts/linux/snowy"
-  fi
-fi
-
-
-export PATH="$PATH:$HOME/.rvm/bin"
-
+# BEGIN zsh features ###########################################################
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=65535
 SAVEHIST=4294967295
@@ -40,7 +39,9 @@ colors
 
 autoload -U promptinit
 promptinit
+# END zsh features #############################################################
 
+# BEGIN prompt #################################################################
 if [[ $(uname -n) == 'snowy' ]]; then
   PROMPTCOLOR=cyan
 elif [[ $(uname -n) == 'owlbear' ]]; then
@@ -52,8 +53,10 @@ else
 fi
 
 export PROMPT="%F{$PROMPTCOLOR}> %f"
-export RPROMPT="%F{$PROMPTCOLOR}%~%f"
+export RPROMPT="%F{$PROMPTCOLOR}f"
+# END prompt ###################################################################
 
+# BEGIN aliases ################################################################
 if hash nvim 2>/dev/null; then
   export VISUAL=nvim
   alias vim=nvim
@@ -64,9 +67,15 @@ fi
 export EDITOR="$VISUAL"
 
 alias ls='ls -Fh'
+if [[ $(uname) == 'Linux' ]]; then
+  alias ls='ls -Fh --color=always --group-directories-first'
+fi
 alias l=ls
+alias ll='ls -l'
 alias vcat='vim --cmd "set t_ti= t_te=" +redraw +q'
+# BEGIN aliases ################################################################
 
+# BEGIN run on shell startup ###################################################
 if hash docker-machine 2>/dev/null; then
   eval "$(docker-machine env default > /dev/null 2>&1)"
 fi
@@ -74,3 +83,4 @@ fi
 if ( hash tmux 2>/dev/null ) && [ $SHLVL -eq 1 ]; then
   tmux
 fi
+# END run on shell startup #####################################################
