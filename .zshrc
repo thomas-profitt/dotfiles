@@ -53,7 +53,7 @@ else
 fi
 
 export PROMPT="%F{$PROMPTCOLOR}> %f"
-export RPROMPT="%F{$PROMPTCOLOR}f"
+export RPROMPT="%F{$PROMPTCOLOR}%~%"
 # END prompt ###################################################################
 
 # BEGIN aliases ################################################################
