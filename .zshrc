@@ -45,11 +45,11 @@ promptinit
 if [[ $(uname -n) == 'snowy' ]]; then
   PROMPTCOLOR=cyan
 elif [[ $(uname -n) == 'owlbear' ]]; then
-  PROMPTCOLOR=blue
-elif [[ $(uname -n) == 'frogmouth' ]]; then
-  PROMPTCOLOR=green
-else
   PROMPTCOLOR=yellow
+elif [[ $(uname -n) == 'frogmouth' ]]; then
+  PROMPTCOLOR=red
+else
+  PROMPTCOLOR=white
 fi
 
 export PROMPT="%F{$PROMPTCOLOR}> %f"
