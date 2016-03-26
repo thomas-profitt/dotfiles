@@ -76,11 +76,13 @@ alias vcat='vim --cmd "set t_ti= t_te=" +redraw +q'
 # BEGIN aliases ################################################################
 
 # BEGIN run on shell startup ###################################################
+if ( hash tmux 2>/dev/null ) && [ $SHLVL -eq 1 ]; then
+  tmux
+fi
+
 if hash docker-machine 2>/dev/null; then
   eval "$(docker-machine env default > /dev/null 2>&1)"
 fi
 
-if ( hash tmux 2>/dev/null ) && [ $SHLVL -eq 1 ]; then
-  tmux
-fi
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 # END run on shell startup #####################################################
