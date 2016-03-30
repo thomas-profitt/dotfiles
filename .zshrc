@@ -72,6 +72,7 @@ if [[ $(uname) == 'Linux' ]]; then
 fi
 alias l=ls
 alias ll='ls -l'
+alias q='exit'
 alias vcat='vim --cmd "set t_ti= t_te=" +redraw +q'
 # BEGIN aliases ################################################################
 
