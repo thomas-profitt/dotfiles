@@ -77,7 +77,7 @@ alias vcat='vim --cmd "set t_ti= t_te=" +redraw +q'
 # BEGIN aliases ################################################################
 
 # BEGIN run on shell startup ###################################################
-if ( hash tmux 2>/dev/null ) && [ $SHLVL -eq 1 ]; then
+if ( hash tmux 2>/dev/null ) && [ $TERM != "screen-256color" ]; then
   tmux
 fi
 
