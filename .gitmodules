@@ -1,3 +1,36 @@
 [submodule ".vim/bundle/vim-rails"]
 	path = .vim/bundle/vim-rails
 	url = https://github.com/tpope/vim-rails.git
+[submodule ".vim/bundle/brightscript.vim"]
+	path = .vim/bundle/brightscript.vim
+	url = https://github.com/chooh/brightscript.vim.git
+[submodule ".vim/bundle/vim-css-color"]
+	path = .vim/bundle/vim-css-color
+	url = https://github.com/ap/vim-css-color.git
+[submodule ".vim/bundle/vim-coffee-script"]
+	path = .vim/bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule ".vim/bundle/vim-ping-cursor"]
+	path = .vim/bundle/vim-ping-cursor
+	url = https://github.com/cyphactor/vim-ping-cursor.git
+[submodule ".vim/bundle/rename.vim"]
+	path = .vim/bundle/rename.vim
+	url = https://github.com/danro/rename.vim.git
+[submodule ".vim/bundle/tabular"]
+	path = .vim/bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule ".vim/bundle/indentLine"]
+	path = .vim/bundle/indentLine
+	url = https://github.com/Yggdroot/indentLine.git
+[submodule ".vim/bundle/supertab"]
+	path = .vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
+[submodule ".vim/bundle/MatchTag"]
+	path = .vim/bundle/MatchTag
+	url = https://github.com/gregsexton/MatchTag.git
+[submodule ".vim/bundle/syntastic"]
+	path = .vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule ".vim/bundle/swift.vim"]
+	path = .vim/bundle/swift.vim
+	url = https://github.com/keith/swift.vim.git
