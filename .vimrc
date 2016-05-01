@@ -35,7 +35,6 @@ set noeol
 nore ; :
 nore , ;
 imap jj <Esc>
-map <C-n> :NERDTreeToggle<CR>
 
 " I may never want to use vim's registers.
 nnoremap y  "+y
