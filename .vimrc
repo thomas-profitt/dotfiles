@@ -1,9 +1,11 @@
 call pathogen#infect()
 let g:aldmeris_transparent = 0
 let g:syntastic_cpp_compiler_options = "-std=c++11"
+let g:indentLine_color_gui = '#4C453B'
 
 syntax on
-colorscheme flatlandia
+colorscheme solarized
+set background=dark
 
 set autoindent
 set breakindent
@@ -27,7 +29,7 @@ set showbreak=+\
 
 set mouse=a
 
-" Work with our git repos
+" I'll choose when I want EOLs!
 set binary
 set noeol
 
