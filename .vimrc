@@ -1,18 +1,19 @@
+let g:pathogen_disabled = ["brightscript.vim", "indentLine", "swift.vim", "vim-ping-cursor"]
 call pathogen#infect()
 let g:aldmeris_transparent = 0
 let g:syntastic_cpp_compiler_options = "-std=c++11"
 let g:indentLine_color_gui = '#4C453B'
 
 syntax on
-colorscheme solarized
-set background=dark
+"set background=dark
+colorscheme flatlandia
 
 set autoindent
 set breakindent
 
 set ruler
-set cursorline
-set cursorcolumn
+"set cursorline
+"set cursorcolumn
 
 set tabpagemax=100
 
@@ -53,11 +54,11 @@ vnoremap P "+P
 " Fix backspace not working in insert mode in iTerm2
 set backspace=indent,eol,start
 
-set colorcolumn+=81
-set colorcolumn+=101
-set colorcolumn+=121
-set colorcolumn+=141
-set colorcolumn+=161
+"set colorcolumn+=81
+"set colorcolumn+=101
+"set colorcolumn+=121
+"set colorcolumn+=141
+"set colorcolumn+=161
 
 set tabstop=2
 set shiftwidth=2
@@ -74,3 +75,8 @@ if has('nvim')
 else
   set ttymouse=sgr
 endif
+
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
