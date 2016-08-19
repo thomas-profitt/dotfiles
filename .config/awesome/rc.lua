@@ -44,7 +44,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(os.getenv("HOME") .. "/.config/awesome/custom_theme.lua")
+beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/solarized_brine.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
@@ -61,15 +61,15 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 local layouts =
 {
-    awful.layout.suit.spiral,
+    awful.layout.suit.fair,
     awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
+    awful.layout.suit.fair.horizontal,
     awful.layout.suit.tile,
+    awful.layout.suit.spiral,
+    awful.layout.suit.max.fullscreen,
     -- awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     -- awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral.dwindle,
     awful.layout.suit.magnifier,
     awful.layout.suit.floating
@@ -77,12 +77,13 @@ local layouts =
 -- }}}
 
 -- {{{ Wallpaper
-if beautiful.wallpaper then
-    for s = 1, screen.count() do
-        gears.wallpaper.maximized(beautiful.wallpaper, s, false)
+-- if beautiful.wallpaper then
+--    for s = 1, screen.count() do
+--        gears.wallpaper.maximized(beautiful.wallpaper, s, false)
         -- gears.wallpaper.tiled(beautiful.wallpaper, s)
-    end
-end
+--    end
+-- end
+io.popen("xsetroot -solid '" .. beautiful.bg_normal .. "'", "r")
 -- }}}
 
 -- {{{ Tags
@@ -100,35 +101,25 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- {{{ Wibox
 -- Create a textclock widget
-mytextclock = awful.widget.textclock("%a %b %d %I:%M")
+-- mytextclock = awful.widget.textclock("%a %b %d %I:%M")
 
 -- Custom widgets
 batterywidget = nil
 batwidgetprogressbar = nil
-if os.execute("which acpitool") == 0 then
-
-  -- batwidgetprogressbar = awful.widget.progressbar()
-  -- batwidgetprogressbar:set_width(4)
-  -- batwidgetprogressbar:set_height(10)
-  -- batwidgetprogressbar:set_vertical(true)
-  -- batwidgetprogressbar:set_background_color("#494B4F")
-  -- batwidgetprogressbar:set_border_color(nil)
-  -- batwidgetprogressbar:set_color(beautiful.fg_normal)
-  -- vicious.register(batwidgetprogressbar, vicious.widgets.bat, "$2", 61, "BAT0")
+if true or os.execute("which acpitool") == 0 then
 
   batterywidget = wibox.widget.textbox()
-  batterywidget:set_text("   ---.--%   ")
+  batterywidget:set_text("  --.--%  ")
   batterywidgettimer = timer({ timeout = 10 })
   batterywidgettimer:connect_signal("timeout",
     function()
-      fh = assert(io.popen("acpitool -b | grep -om1 '.[0-9][0-9]\.[0-9]' ", "r"))
+      fh = assert(io.popen("acpitool -b | grep -om1 '[0-9]*\\.[0-9]' ", "r"))
       percentagestring = fh:read("*l")
       fh:close()
       if tonumber(percentagestring) <= 10 then
-        batterywidget:set_markup('    <span color="' .. beautiful.bg_urgent .. '">' .. percentagestring .. "% </span>   ")
-        naughty.notify({ preset = naughty.config.presets.critical,
-                         title = "Battery Critical",
-                         text = "Do something!" })
+        batterywidget:set_markup('  <span color="' .. beautiful.bg_urgent .. '">' .. percentagestring .. "% </span>  ")
+      elseif tonumber(percentagestring) <= 60 then
+        batterywidget:set_markup('  <span color="' .. '#b58900' .. '">' .. percentagestring .. "% </span>  ")
       else
         batterywidget:set_text("    " .. percentagestring .. "%   ")
       end
@@ -217,8 +208,7 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(mytextclock)
-    if batwidgetprogressbar then right_layout:add(batwidgetprogressbar) end
+    -- right_layout:add(mytextclock)
     if batterywidget then right_layout:add(batterywidget) end
     right_layout:add(mylayoutbox[s])
 
@@ -241,8 +231,8 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
+    awful.key({ modkey,           }, "h",   awful.tag.viewprev       ),
+    awful.key({ modkey,           }, "l",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
     awful.key({ modkey,           }, "j",
@@ -256,12 +246,15 @@ globalkeys = awful.util.table.join(
             if client.focus then client.focus:raise() end
         end),
 
+
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
-    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
-    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
+    awful.key({ modkey, "Control" }, "h", function () awful.screen.focus_relative( 1) end),
+    awful.key({ modkey, "Control" }, "l", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
+
+    --[[
     awful.key({ modkey,           }, "Tab",
         function ()
             -- awful.client.focus.history.previous()
@@ -279,13 +272,16 @@ globalkeys = awful.util.table.join(
                 client.focus:raise()
             end
         end),
+    ]]--
 
     -- Standard program
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
+    --[[
+      awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
+      awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
+    ]]--
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
     awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
     awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
@@ -400,13 +396,24 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "frameless" },
       properties = { floating = true } },
+    { rule = { class = "Application Finder" },
+      properties = { floating = true } },
     { rule = { class = "xfce4-panel" },
       properties = { focus = false } },
     { rule = { class = "Synapse" },
       properties = { border_width = 0 } },
+    { rule = { name = "Terminal" },
+      properties = { size_hints_honor = false } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
+    { rule = { class = "Conky" },
+      properties = {
+        floating = true,
+        sticky = true,
+        ontop = false,
+        focusable = false,
+        border_width = 0} },
 }
 -- }}}
 

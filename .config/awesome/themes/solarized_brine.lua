@@ -4,9 +4,9 @@
 
 theme = {}
 
-theme.font          = "SFNS Text MediumP4 12"
+theme.font          = "SF Compact Text Regular 15"
 
-theme.bg_normal     = "#002B36"
+theme.bg_normal     = "#032323"
 theme.bg_focus      = "#B58900"
 theme.bg_urgent     = "#DC322F"
 theme.bg_minimize   = "#586E75"
