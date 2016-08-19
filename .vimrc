@@ -3,10 +3,11 @@ call pathogen#infect()
 let g:aldmeris_transparent = 0
 let g:syntastic_cpp_compiler_options = "-std=c++11"
 let g:indentLine_color_gui = '#4C453B'
+let g:gruvbox_italic=1
 
 syntax on
-"set background=dark
-colorscheme flatlandia
+set background=dark
+colorscheme gruvbox
 
 set autoindent
 set breakindent
@@ -26,6 +27,7 @@ set listchars=tab:\│\ ,trail:·
 
 set matchpairs+=<:>
 
+set wrap linebreak nolist
 set showbreak=+\ 
 
 set mouse=a
@@ -75,8 +77,4 @@ if has('nvim')
 else
   set ttymouse=sgr
 endif
-
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
