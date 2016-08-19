@@ -7,6 +7,9 @@ export PATH="$PATH:$HOME/scripts/by-uname/$(uname)/by-hostname/$(uname -n)"
 export PATH="$PATH:$HOME/scripts/by-hostname/$(uname -n)"
 
 export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
+export GOPATH="$HOME/software/go"
+export PATH="$PATH:$HOME/software/go/bin"
 # END path #####################################################################
 
 # BEGIN uname switching ########################################################
