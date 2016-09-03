@@ -1,55 +1,13 @@
--- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
 awful.rules = require("awful.rules")
 require("awful.autofocus")
--- Widget and layout library
 local wibox = require("wibox")
--- Theme handling library
 local beautiful = require("beautiful")
--- Notification library
-local naughty = require("naughty")
-local menubar = require("menubar")
--- Tom was here
 local utils = require("lib.utils")
 local vicious = require("vicious")
 
--- Load Debian menu entries
-require("debian.menu")
-
--- {{{ Error handling
--- Check if awesome encountered an error during startup and fell back to
--- another config (This code will only ever execute for the fallback config)
-if awesome.startup_errors then
-    naughty.notify({ preset = naughty.config.presets.critical,
-                     title = "Oops, there were errors during startup!",
-                     text = awesome.startup_errors })
-end
-
--- Handle runtime errors after startup
-do
-    local in_error = false
-    awesome.connect_signal("debug::error", function (err)
-        -- Make sure we don't go into an endless error loop
-        if in_error then return end
-        in_error = true
-
-        naughty.notify({ preset = naughty.config.presets.critical,
-                         title = "Oops, an error happened!",
-                         text = err })
-        in_error = false
-    end)
-end
--- }}}
-
--- {{{ Variable definitions
--- Themes define colours, icons, font and wallpapers.
 beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/solarized_brine.lua")
-
--- This is used later as the default terminal and editor to run.
-terminal = "x-terminal-emulator"
-editor = os.getenv("EDITOR") or "editor"
-editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -76,15 +34,7 @@ local layouts =
 }
 -- }}}
 
--- {{{ Wallpaper
--- if beautiful.wallpaper then
---    for s = 1, screen.count() do
---        gears.wallpaper.maximized(beautiful.wallpaper, s, false)
-        -- gears.wallpaper.tiled(beautiful.wallpaper, s)
---    end
--- end
-io.popen("xsetroot -solid '" .. beautiful.bg_normal .. "'", "r")
--- }}}
+io.popen("hsetroot -solid '" .. beautiful.bg_normal .. "'", "r")
 
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
@@ -93,10 +43,6 @@ for s = 1, screen.count() do
     -- Each screen has its own tag table.
     tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
 end
--- }}}
-
--- Menubar configuration
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
 -- {{{ Wibox
@@ -252,9 +198,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
     awful.key({ modkey, "Control" }, "h", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "l", function () awful.screen.focus_relative(-1) end),
-    awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
 
-    --[[
     awful.key({ modkey,           }, "Tab",
         function ()
             -- awful.client.focus.history.previous()
@@ -272,7 +216,6 @@ globalkeys = awful.util.table.join(
                 client.focus:raise()
             end
         end),
-    ]]--
 
     -- Standard program
     awful.key({ modkey, "Control" }, "r", awesome.restart),
@@ -298,9 +241,7 @@ globalkeys = awful.util.table.join(
                   mypromptbox[mouse.screen].widget,
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
-              end),
-    -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end)
+              end)
 )
 
 clientkeys = awful.util.table.join(
@@ -398,22 +339,14 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "Application Finder" },
       properties = { floating = true } },
-    { rule = { class = "xfce4-panel" },
-      properties = { focus = false } },
+    { rule = { name = "xfce4-panel" },
+      properties = { border_width = 0, focus = false, focusable = false, sticky = true } },
     { rule = { class = "Synapse" },
       properties = { border_width = 0 } },
     { rule = { name = "Terminal" },
       properties = { size_hints_honor = false } },
-    -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
-    { rule = { class = "Conky" },
-      properties = {
-        floating = true,
-        sticky = true,
-        ontop = false,
-        focusable = false,
-        border_width = 0} },
+    { rule = { name = "xfce4-notifyd" },
+      properties = { focus = false, border_width = 0 } }
 }
 -- }}}
 
