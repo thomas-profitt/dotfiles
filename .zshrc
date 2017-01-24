@@ -61,15 +61,6 @@ export RPROMPT="%F{$PROMPTCOLOR}%~%"
 # END prompt ###################################################################
 
 # BEGIN aliases ################################################################
-if hash nvim 2>/dev/null; then
-  export VISUAL=nvim
-  alias vim=nvim
-  alias view=nvim
-else
-  export VISUAL=vim
-fi
-export EDITOR="$VISUAL"
-
 alias ls='ls -Fh'
 if [[ $(uname) == 'Linux' ]]; then
   alias ls='ls -Fh --color=always --group-directories-first'
