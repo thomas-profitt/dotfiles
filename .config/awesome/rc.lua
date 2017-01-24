@@ -7,7 +7,7 @@ local beautiful = require("beautiful")
 local utils = require("lib.utils")
 local vicious = require("vicious")
 
-beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/solarized_brine.lua")
+beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/adwaita_epic.lua")
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -34,8 +34,6 @@ local layouts =
 }
 -- }}}
 
-io.popen("hsetroot -solid '" .. beautiful.bg_normal .. "'", "r")
-
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {}
@@ -52,7 +50,7 @@ end
 -- Custom widgets
 batterywidget = nil
 batwidgetprogressbar = nil
-if true or os.execute("which acpitool") == 0 then
+if false and os.execute("which acpitool") == 0 then
 
   batterywidget = wibox.widget.textbox()
   batterywidget:set_text("  --.--%  ")
@@ -181,18 +179,6 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "l",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
-    awful.key({ modkey,           }, "j",
-        function ()
-            awful.client.focus.byidx( 1)
-            if client.focus then client.focus:raise() end
-        end),
-    awful.key({ modkey,           }, "k",
-        function ()
-            awful.client.focus.byidx(-1)
-            if client.focus then client.focus:raise() end
-        end),
-
-
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
@@ -311,8 +297,8 @@ end
 
 clientbuttons = awful.util.table.join(
     awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
-    awful.button({ modkey }, 1, awful.mouse.client.move),
-    awful.button({ modkey }, 3, awful.mouse.client.resize))
+    awful.button({ modkey, "Control" }, 1, awful.mouse.client.move),
+    awful.button({ modkey, "Control" }, 3, awful.mouse.client.resize))
 
 -- Set keys
 root.keys(globalkeys)
@@ -329,6 +315,7 @@ awful.rules.rules = {
                      raise = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
+
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { class = "pinentry" },
@@ -356,7 +343,7 @@ client.connect_signal("manage", function (c, startup)
     -- Enable sloppy focus
     c:connect_signal("mouse::enter", function(c)
         if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
-            and awful.client.focus.filter(c) then
+        and awful.client.focus.filter(c) then
             client.focus = c
         end
     end)
