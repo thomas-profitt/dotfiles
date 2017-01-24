@@ -1,5 +1,6 @@
 # BEGIN path ###################################################################
-export PATH="$PATH:$HOME/bin"
+export PATH="$HOME/bin:$PATH"
+export PATH="$PATH:$HOME/.local/bin"
 
 export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:$HOME/scripts/by-uname/$(uname)"
