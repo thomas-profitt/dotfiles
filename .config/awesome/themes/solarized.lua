@@ -76,7 +76,13 @@ theme.titlebar_maximized_button_focus_inactive  = "/usr/share/awesome/themes/def
 theme.titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = "/usr/share/awesome/themes/default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "~/Desktop/wallpaper"
+if theme.wallpaper then
+    for s = 1, screen.count() do
+        gears.wallpaper.maximized(theme.wallpaper, s, false)
+    end
+else
+  io.popen("hsetroot -solid '" .. theme.bg_normal .. "'", "r")
+end
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = "/usr/share/awesome/themes/default/layouts/fairhw.png"
