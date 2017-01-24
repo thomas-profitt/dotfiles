@@ -1,5 +1,5 @@
 # BEGIN path ###################################################################
-export PATH="$HOME/bin:$PATH"
+export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/.local/bin"
 
 export PATH="$PATH:$HOME/scripts"
@@ -7,25 +7,10 @@ export PATH="$PATH:$HOME/scripts/by-uname/$(uname)"
 export PATH="$PATH:$HOME/scripts/by-uname/$(uname)/by-hostname/$(uname -n)"
 export PATH="$PATH:$HOME/scripts/by-hostname/$(uname -n)"
 
-export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
-export GOPATH="$HOME/software/go"
 export PATH="$PATH:$HOME/software/go/bin"
+export GOPATH="$HOME/software/go"
 # END path #####################################################################
-
-# BEGIN uname switching ########################################################
-if [[ $(uname) == 'Darwin' ]]; then
-  export CLICOLOR=1
-  if [[ $(uname -n) == 'snowy' ]]; then
-    export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin"
-    export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools/"
-    export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-    export PATH="/usr/local/Cellar/qt5/5.4.0/bin:$PATH"
-    export PATH="$HOME/software/apache-maven-3.3.3/bin:$PATH"
-    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  fi
-fi
-# END uname switching ##########################################################
 
 # BEGIN zsh features ###########################################################
 HISTFILE=$HOME/.zsh_history
@@ -84,6 +69,4 @@ fi
 if hash docker-machine 2>/dev/null; then
   eval "$(docker-machine env default > /dev/null 2>&1)"
 fi
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 # END run on shell startup #####################################################
