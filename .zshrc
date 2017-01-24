@@ -69,7 +69,12 @@ alias l=ls
 alias ll='ls -l'
 alias q='exit'
 alias vcat='vim --cmd "set t_ti= t_te=" +redraw +q'
-# BEGIN aliases ################################################################
+# END aliases ################################################################
+
+# BEGIN set common environment variables #####################################
+export VISUAL=vim
+export EDITOR="$VISUAL"
+# END set common environment variables #######################################
 
 # BEGIN run on shell startup ###################################################
 if ( hash tmux 2>/dev/null ) && [ $TERM != "screen-256color" ]; then
