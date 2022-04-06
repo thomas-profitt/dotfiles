@@ -1,4 +1,4 @@
-let g:pathogen_disabled = ["brightscript.vim", "indentLine", "swift.vim", "vim-ping-cursor"]
+let g:pathogen_disabled = ["indentLine", "swift.vim", "vim-ping-cursor", "MatchTag"]
 call pathogen#infect()
 
 set termguicolors
@@ -10,19 +10,20 @@ let g:aldmeris_transparent = 0
 let g:syntastic_cpp_compiler_options = "-std=c++11"
 let g:indentLine_color_gui = '#4C453B'
 let g:gruvbox_italic=0
-let g:gruvbox_contrast_dark="hard"
+let g:gruvbox_contrast_dark="normal"
 
 syntax on
 set background=dark
-colorscheme gruvbox
-
-set autoindent
-set breakindent
+" colorscheme gruvbox
+colorscheme yin
 
 set ruler
-"set cursorline
+" set cursorline
 set cursorcolumn
 
+set ttyfast
+
+set hidden
 set tabpagemax=100
 
 filetype plugin on
@@ -34,7 +35,7 @@ set listchars=tab:\│\ ,trail:·
 
 set matchpairs+=<:>
 
-set wrap linebreak nolist
+set wrap linebreak
 set showbreak=+\ 
 
 set mouse=a
@@ -45,8 +46,8 @@ set noeol
 
 " Finger-savers
 nore ; :
-nore , ;
 imap jj <Esc>
+imap jt <Esc>
 
 " I may never want to use vim's registers.
 nnoremap y  "+y
@@ -60,26 +61,32 @@ vnoremap d "+d
 vnoremap p "+p
 vnoremap P "+P
 
-map <C-n> :NERDTreeToggle<CR>
+nnoremap j gj
+nnoremap k gk
+
+nnoremap <C-N> :NERDTreeToggle<CR>
+nnoremap <C-O> :NERDTreeFind<CR>
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
 
 " Fix backspace not working in insert mode in iTerm2
 set backspace=indent,eol,start
 
-"set colorcolumn+=81
-"set colorcolumn+=101
-"set colorcolumn+=121
-"set colorcolumn+=141
-"set colorcolumn+=161
-
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-set et
+set expandtab
+set autoindent
+set breakindent
+set nosmartindent
 
+set ignorecase
+set smartcase
 set hlsearch
+set incsearch
 nnoremap <CR> :noh<CR>
+
+set fdo-=search
 
 " Statusline
 set laststatus=2
@@ -87,3 +94,9 @@ set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
 " Autocmd
 autocmd BufNewFile,BufReadPost *.hamlbars set filetype=haml
+augroup VCenterCursor
+  au!
+  au BufEnter,WinEnter,WinNew,VimResized *,*.*
+        \ let &scrolloff=winheight(win_getid())/2
+augroup END
+"autocmd BufWinEnter * NERDTreeMirror

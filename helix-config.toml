@@ -1,0 +1,21 @@
+theme = "autumnal"
+
+[editor]
+line-number = "relative"
+scrolloff = 0
+
+[keys.normal]
+p = ":clipboard-paste-after"
+P = ":clipboard-paste-before"
+y = ":clipboard-yank-join"
+Y = ":clipboard-yank"
+R = ":clipboard-paste-replace"
+
+[keys.select]
+p = ":clipboard-paste-after"
+P = ":clipboard-paste-before"
+y = ":clipboard-yank-join"
+Y = ":clipboard-yank"
+R = ":clipboard-paste-replace"
+
+[keys.insert]
