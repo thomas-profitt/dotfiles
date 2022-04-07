@@ -1,8 +1,13 @@
-theme = "autumnal"
+theme = "default"
 
 [editor]
 line-number = "relative"
 scrolloff = 0
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "block"
 
 [keys.normal]
 p = ":clipboard-paste-after"
@@ -10,6 +15,7 @@ P = ":clipboard-paste-before"
 y = ":clipboard-yank-join"
 Y = ":clipboard-yank"
 R = ":clipboard-paste-replace"
+d = [":clipboard-yank-join", "delete_selection"]
 
 [keys.select]
 p = ":clipboard-paste-after"
@@ -17,5 +23,6 @@ P = ":clipboard-paste-before"
 y = ":clipboard-yank-join"
 Y = ":clipboard-yank"
 R = ":clipboard-paste-replace"
+d = [":clipboard-yank-join", "delete_selection"]
 
 [keys.insert]
