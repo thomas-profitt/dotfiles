@@ -16,6 +16,8 @@ y = ":clipboard-yank-join"
 Y = ":clipboard-yank"
 R = ":clipboard-paste-replace"
 d = [":clipboard-yank-join", "delete_selection"]
+del = "delete_selection_noyank"
+"^" = "goto_first_nonwhitespace"
 
 [keys.select]
 p = ":clipboard-paste-after"
@@ -24,5 +26,7 @@ y = ":clipboard-yank-join"
 Y = ":clipboard-yank"
 R = ":clipboard-paste-replace"
 d = [":clipboard-yank-join", "delete_selection"]
+del = "delete_selection_noyank"
+"^" = "goto_first_nonwhitespace"
 
 [keys.insert]
