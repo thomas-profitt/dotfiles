@@ -2,7 +2,9 @@ theme = "default"
 
 [editor]
 line-number = "relative"
+gutters = []
 scrolloff = 0
+true-color = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -18,6 +20,8 @@ R = ":clipboard-paste-replace"
 d = [":clipboard-yank-join", "delete_selection"]
 del = "delete_selection_noyank"
 "^" = "goto_first_nonwhitespace"
+"$" = "goto_line_end"
+"#" = "toggle_comments"
 
 [keys.select]
 p = ":clipboard-paste-after"
@@ -28,5 +32,7 @@ R = ":clipboard-paste-replace"
 d = [":clipboard-yank-join", "delete_selection"]
 del = "delete_selection_noyank"
 "^" = "goto_first_nonwhitespace"
+"$" = "goto_line_end"
+"#" = "toggle_comments"
 
 [keys.insert]
